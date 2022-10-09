@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FridgeApi", "FridgeApi\FridgeApi.csproj", "{3D736E39-7D28-4BC9-9374-47702CE9E8B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FridgeApi", "FridgeApi\FridgeApi.csproj", "{3D736E39-7D28-4BC9-9374-47702CE9E8B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fridsge.Data", "Fridsge.Data\Fridsge.Data.csproj", "{B2046BA7-3511-444C-8EF6-E1932AEB5CA8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{3D736E39-7D28-4BC9-9374-47702CE9E8B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D736E39-7D28-4BC9-9374-47702CE9E8B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D736E39-7D28-4BC9-9374-47702CE9E8B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2046BA7-3511-444C-8EF6-E1932AEB5CA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2046BA7-3511-444C-8EF6-E1932AEB5CA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2046BA7-3511-444C-8EF6-E1932AEB5CA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2046BA7-3511-444C-8EF6-E1932AEB5CA8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
