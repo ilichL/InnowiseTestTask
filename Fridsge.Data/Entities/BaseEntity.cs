@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fridge.Data.Entities
+namespace FridgeWarehouse.Data.Entities
 {
     public class BaseEntity
     {

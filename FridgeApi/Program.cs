@@ -1,35 +1,23 @@
+using Serilog;
+
 namespace FridgeApi
 {
     public class Program
     {
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .UseSerilog((ctx, lc) =>
+                {
+                    lc.MinimumLevel.Debug().WriteTo.File(@"C:\Users\adm\Desktop\Site\WarspearProject\FridgeApi\log.log");
+                }).ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                });
+
         public static void Main(string[] args)
         {
-            var builder = WebApplication.CreateBuilder(args);
+            CreateHostBuilder(args).Build().Run();
 
-            // Add services to the container.
-
-            builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
-
-            var app = builder.Build();
-
-            // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
-
-            app.UseHttpsRedirection();
-
-            app.UseAuthorization();
-
-
-            app.MapControllers();
-
-            app.Run();
         }
     }
 }

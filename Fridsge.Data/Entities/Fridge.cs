@@ -1,16 +1,17 @@
-﻿using Fridge.Data.Entities;
+﻿using FridgeWarehouse.Data.Entities;
+using FridsgeWarehouse.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fridsge.Data.Entities
+namespace FridgeWarehouse.Data.Entities
 {
     public class Fridge : BaseEntity
     {
         public string Name { get; set; }
-        public Guid FRidgeModelId { get; set; }
+        public Guid FridgeModelId { get; set; }
         public virtual ICollection<FridgeProduct> FridgeProducts { get; set; }
     }
 }

@@ -1,14 +1,9 @@
-﻿using Fridge.Core.Interfaces.Data;
-using Fridge.Data.Entities;
-using Fridsge.Data;
+﻿using FridgeWarehouse.Core.Interfaces.Data;
+using FridgeWarehouse.Data;
+using FridgeWarehouse.Data.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Fridge.DataAccess
+namespace FridgeWarehouse.DataAccess
 {
     public class Repository<T> : IRepository<T> where T : BaseEntity 
     {

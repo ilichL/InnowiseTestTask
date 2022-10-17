@@ -3,13 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FridgeApi", "FridgeApi\FridgeApi.csproj", "{3D736E39-7D28-4BC9-9374-47702CE9E8B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FridgeWarehouseApi", "FridgeApi\FridgeWarehouseApi.csproj", "{3D736E39-7D28-4BC9-9374-47702CE9E8B7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AB2C3480-41FE-49E2-9933-DFAD6CDD9F89} = {AB2C3480-41FE-49E2-9933-DFAD6CDD9F89}
+	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fridge.Data", "Fridsge.Data\Fridge.Data.csproj", "{B2046BA7-3511-444C-8EF6-E1932AEB5CA8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FridgeWarehouse.Data", "Fridsge.Data\FridgeWarehouse.Data.csproj", "{B2046BA7-3511-444C-8EF6-E1932AEB5CA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fridge.DataAccess", "Fridge.DataAccess\Fridge.DataAccess.csproj", "{AB2C3480-41FE-49E2-9933-DFAD6CDD9F89}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FridgeWarehouse.DataAccess", "Fridge.DataAccess\FridgeWarehouse.DataAccess.csproj", "{AB2C3480-41FE-49E2-9933-DFAD6CDD9F89}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fridge.Core", "Fridge.Core\Fridge.Core.csproj", "{0198B3A8-80CF-4847-80BB-E8468D18ABBD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FridgeWarehouse.Core", "Fridge.Core\FridgeWarehouse.Core.csproj", "{0198B3A8-80CF-4847-80BB-E8468D18ABBD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
