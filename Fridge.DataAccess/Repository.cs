@@ -2,6 +2,8 @@
 using FridgeWarehouse.Data;
 using FridgeWarehouse.Data.Entities;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace FridgeWarehouse.DataAccess
 {
@@ -16,7 +18,7 @@ namespace FridgeWarehouse.DataAccess
             dbSet = context.Set<T>();
         }
 
-        public virtual async Task Add(T obj)
+        public virtual async Task AddAsync(T obj)
         {
             await dbSet.AddAsync(obj);
         }
@@ -39,6 +41,18 @@ namespace FridgeWarehouse.DataAccess
         public virtual async Task Update(T entity)
         {
             dbSet.Update(entity);
+        }
+
+        public virtual async Task<IQueryable<T>> FindBy(Expression<Func<T, bool>> predicate,
+            params Expression<Func<T, object>>[] includes)
+        {
+            var result = dbSet.Where(predicate);
+
+            if (includes.Any())
+            {
+                result = includes.Aggregate(result, (current, include) => current.Include(include));
+            }
+            return result;
         }
 
         public virtual IQueryable<T> Get()

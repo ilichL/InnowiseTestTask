@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Fridge.Core\FridgeWarehouse.Core.csproj" />
+    <ProjectReference Include="..\Fridge.DataAccess\FridgeWarehouse.DataAccess.csproj" />
     <ProjectReference Include="..\Fridsge.Data\FridgeWarehouse.Data.csproj" />
   </ItemGroup>
 

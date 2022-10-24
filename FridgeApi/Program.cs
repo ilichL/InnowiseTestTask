@@ -8,6 +8,7 @@ namespace FridgeApi
             Host.CreateDefaultBuilder(args)
                 .UseSerilog((ctx, lc) =>
                 {
+                    lc.MinimumLevel.Information().WriteTo.Console();
                     lc.MinimumLevel.Debug().WriteTo.File(@"C:\Users\adm\Desktop\Site\WarspearProject\FridgeApi\log.log");
                 }).ConfigureWebHostDefaults(webBuilder =>
                 {

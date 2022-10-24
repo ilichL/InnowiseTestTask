@@ -1,5 +1,6 @@
 ﻿using FridgeWarehouse.Core.Interfaces.Data;
 using FridgeWarehouse.Data;
+using FridgeWarehouse.Data.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,10 +18,20 @@ namespace FridgeWarehouseApi.Controllers
             this.context = context;
         }
 
-        [HttpPost]
-        public async Task Test ()
+        [HttpGet]
+        public async Task<IActionResult> Test ()
         {
-            unitOfWork.friges
+            Fridge test = new Fridge()
+            {
+                Id = Guid.NewGuid(),
+                Name = "Test",
+                FridgeModelId = Guid.NewGuid(),
+            };
+            //await context.Fridges.AddAsync(test);
+            //await context.SaveChangesAsync();
+            //await unitOfWork.Fridges.Add(test);
+            //await unitOfWork.SaveChanges();
+            return new BadRequestResult();
         }
     }
 }

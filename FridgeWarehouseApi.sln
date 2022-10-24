@@ -14,6 +14,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FridgeWarehouse.DataAccess"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FridgeWarehouse.Core", "Fridge.Core\FridgeWarehouse.Core.csproj", "{0198B3A8-80CF-4847-80BB-E8468D18ABBD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FridgeWarehouse.Domain", "FridgeWarehouse.Domain\FridgeWarehouse.Domain.csproj", "{0405E045-CA15-459A-8638-C83D4AD4437E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +38,10 @@ Global
 		{0198B3A8-80CF-4847-80BB-E8468D18ABBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0198B3A8-80CF-4847-80BB-E8468D18ABBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0198B3A8-80CF-4847-80BB-E8468D18ABBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0405E045-CA15-459A-8638-C83D4AD4437E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0405E045-CA15-459A-8638-C83D4AD4437E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0405E045-CA15-459A-8638-C83D4AD4437E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0405E045-CA15-459A-8638-C83D4AD4437E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
