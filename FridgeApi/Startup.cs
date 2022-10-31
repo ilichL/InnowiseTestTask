@@ -1,12 +1,13 @@
-﻿using FridgeWarehouse.Core.Interfaces.Data;
+﻿using FridgeWarehouse.Core.Interfaces;
+using FridgeWarehouse.Core.Interfaces.Data;
 using FridgeWarehouse.Data;
 using FridgeWarehouse.Data.Entities;
 using FridgeWarehouse.DataAccess;
+using FridgeWarehouse.Domain.Interfaces;
 using FridsgeWarehouse.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-
-
+using Microsoft.Extensions.DependencyInjection;
 
 namespace FridgeApi
 {
@@ -30,6 +31,9 @@ namespace FridgeApi
             services.AddScoped<IRepository<FridgeModel>, Repository<FridgeModel>>();
             services.AddScoped<IRepository<FridgeProduct>, Repository<FridgeProduct>>();
             services.AddScoped<IRepository<Product>, Repository<Product>>();
+            services.AddScoped<IFridgeService, FridgeService>();
+            services.AddScoped<IFridgeProductService, FridgeProductService>();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());//
 
             // Add services to the container.
 

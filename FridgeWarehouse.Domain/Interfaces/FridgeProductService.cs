@@ -12,20 +12,17 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FridgeWarehouse.Domain.Interfaces
 {
-    public class FridgeProductService
+    public class FridgeProductService : IFridgeProductService
     {
         private readonly IUnitOfWork unitOfWork;
         private readonly IMapper mapper;
-        private readonly IFridgeService fridgeService;
-        //FridgeProducts
-        public FridgeProductService(IUnitOfWork unitOfWork, IMapper mapper, IFridgeService fridgeService)
+        public FridgeProductService(IUnitOfWork unitOfWork, IMapper mapper)
         {
             this.unitOfWork = unitOfWork;
             this.mapper = mapper;
-            this.fridgeService = fridgeService;
         }
 
-        public IEnumerable<FridgeProduct> GetAllFridgeProductsProduts()
+        public IEnumerable<FridgeProduct> GetAllFridgeProducts()
         {
             return unitOfWork.FridgeProducts.Get();
         }
@@ -45,12 +42,31 @@ namespace FridgeWarehouse.Domain.Interfaces
             await unitOfWork.SaveChanges();
         }
 
-        public async Task RemoveFridgeProduct(FridgeProductDTO model)
+        public async Task RemoveFridgeProduct(FridgeProductDTO model, FridgeDTO fridgeModel)
         {
-            var fridgeProduct = await(await unitOfWork.FridgeProducts.FindBy(fridgeProduct => fridgeProduct.Name.Equals(model.Name),
-                fridgeProducts => fridgeProducts.Quantity.Equals(model.Quantity))).FirstOrDefaultAsync();
-            await unitOfWork.FridgeProducts.Remove(fridgeProduct.Id);
-            //delete fridgeProduct from Fridge?
+            var product = await GetFridgeWithProducts(model, fridgeModel);
+
+            await unitOfWork.FridgeProducts.Remove(product.Id);
+            await unitOfWork.SaveChanges();
+        }
+
+        private async Task<FridgeProduct> GetFridgeWithProducts(FridgeProductDTO model, FridgeDTO fridgeModel)
+        {
+            return await unitOfWork.Fridges.Get()
+             .Where(fridge => fridge.Name.Equals(fridgeModel.Name) && fridge.LocationAddress.Equals(fridgeModel.LocationAddress)    )
+             .Include(fridge => fridge.FridgeProducts)
+             .ThenInclude(fridgeProducts => fridgeProducts.Product).AsNoTracking()
+             .SelectMany(fridge => fridge.FridgeProducts)
+             .Where(product => product.Product.Name.Equals(model.Name) && product.Quantity.Equals(model.Quantity)).FirstOrDefaultAsync();
+        }
+
+        public async Task UpdateFridgeProduct(FridgeProductDTO model, FridgeDTO fridgeModel, int quantity)
+        {
+            FridgeProduct product = await GetFridgeWithProducts(model, fridgeModel);
+            product.Quantity = quantity;
+
+            await unitOfWork.FridgeProducts.Update(product);
+            await unitOfWork.SaveChanges();
         }
     }
 }

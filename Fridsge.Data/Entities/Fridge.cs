@@ -11,7 +11,9 @@ namespace FridgeWarehouse.Data.Entities
     public class Fridge : BaseEntity
     {
         public string Name { get; set; }
+        public string LocationAddress { get; set; }
         public Guid FridgeModelId { get; set; }
+        public virtual FridgeModel FridgeModel { get; set; }
         public virtual ICollection<FridgeProduct> FridgeProducts { get; set; }
     }
 }

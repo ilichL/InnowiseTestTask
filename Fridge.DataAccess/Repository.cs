@@ -57,7 +57,7 @@ namespace FridgeWarehouse.DataAccess
 
         public virtual IQueryable<T> Get()
         {
-            return dbSet;
+            return dbSet.AsNoTracking();
         }
 
 

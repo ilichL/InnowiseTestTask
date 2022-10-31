@@ -13,13 +13,15 @@ namespace FridgeWarehouse.Core.Interfaces
     {
         IEnumerable<Fridge> GetAllFridges();
 
-        Task AddFridgeAsync(Fridge model);
+        Task AddFridgeAsync(FridgeDTO model);
 
-        Task UpdateFridge(Fridge model);
+        Task UpdateFridgeAsync(FridgeDTO model, FridgeModelDTO fridgeModel, string? name, string? locationAddress);
 
-        Task RemoveFridge(Fridge model);
+        Task RemoveFridgeByIdAsync(Guid id);
+        Task RemoveFridgeAsync(FridgeDTO model, FridgeModelDTO fridgeModel);
 
         Task<FridgeDTO> GetFridgeByIdASync(Guid id);
+        Task<FridgeDTO> GetFridgeAsync(FridgeDTO model, FridgeModelDTO fridgeModel);
 
     }
 }

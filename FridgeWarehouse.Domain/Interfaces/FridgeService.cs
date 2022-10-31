@@ -3,6 +3,7 @@ using FridgeWarehouse.Core.DTOs;
 using FridgeWarehouse.Core.Interfaces;
 using FridgeWarehouse.Core.Interfaces.Data;
 using FridgeWarehouse.Data.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,27 +28,57 @@ namespace FridgeWarehouse.Domain.Interfaces
             return unitOfWork.Fridges.Get();
         }
 
-        public async Task AddFridgeAsync(Fridge model)
+        public async Task AddFridgeAsync(FridgeDTO model)
         {
-            await unitOfWork.Fridges.AddAsync(model);
+            var fridge = mapper.Map<Fridge>(model);
+            fridge.Id = Guid.NewGuid();
+            await unitOfWork.Fridges.AddAsync(fridge);
             await unitOfWork.SaveChanges();
         }
 
-        public async Task UpdateFridge(Fridge model)
+        public async Task UpdateFridgeAsync(FridgeDTO model, FridgeModelDTO fridgeModel, string? name, string? locationAddress)
         {
-            await unitOfWork.Fridges.Update(model);
+            var fridge = await GetFridgeWithFridgeModel(model, fridgeModel);
+
+            if(name != null)
+                fridge.Name = name;
+            if(locationAddress != null)
+                fridge.LocationAddress = locationAddress;
+
+            await unitOfWork.Fridges.Update(fridge);
             await unitOfWork.SaveChanges();
         }
 
-        public async Task RemoveFridge(Fridge model)
+        public async Task RemoveFridgeByIdAsync(Guid id)
         {
-            await unitOfWork.Fridges.Remove(model.Id);
+            await unitOfWork.Fridges.Remove(id);
             await unitOfWork.SaveChanges();
         }
 
         public async Task<FridgeDTO> GetFridgeByIdASync(Guid id)
         {
             return mapper.Map<FridgeDTO>(await unitOfWork.Fridges.FindById(id));
+        }
+
+        public async Task<FridgeDTO> GetFridgeAsync(FridgeDTO model, FridgeModelDTO fridgeModel)
+        {
+            return mapper.Map<FridgeDTO>(await GetFridgeWithFridgeModel(model, fridgeModel));
+        }
+
+        private async Task<Fridge> GetFridgeWithFridgeModel(FridgeDTO model, FridgeModelDTO fridgeModel)
+        {
+            return await unitOfWork.Fridges.Get()
+            .Where(fridge => fridge.Name.Equals(model.Name) && fridge.LocationAddress.Equals(model.LocationAddress))
+            .Include(fridge => fridge.FridgeModel.Name.Equals(fridgeModel.Name) && fridge.FridgeModel.year.Equals(fridgeModel.year))
+            .FirstOrDefaultAsync();
+        }
+
+        public async Task RemoveFridgeAsync(FridgeDTO model, FridgeModelDTO fridgeModel)
+        {
+            var fridge = await GetFridgeWithFridgeModel(model, fridgeModel);
+
+            await unitOfWork.Fridges.Remove(fridge.Id);
+            await unitOfWork.SaveChanges();
         }
 
     }

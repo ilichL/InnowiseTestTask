@@ -9,9 +9,10 @@ namespace FridsgeWarehouse.Data.Entities
 {
     public class FridgeProduct : BaseEntity
     {
-        public string Name { get; set; }
         public int Quantity { get; set; }
         public Guid FridgeId { get; set; }
         public Guid ProductId { get; set; }
+        public virtual Product Product { get; set; }
+        public virtual Fridge Fridge { get; set; }
     }
 }
