@@ -1,6 +1,9 @@
-﻿using FridgeWarehouse.Core.Interfaces.Data;
+﻿using AutoMapper;
+using FridgeWarehouse.Core.Interfaces;
+using FridgeWarehouse.Core.Interfaces.Data;
 using FridgeWarehouse.Data;
 using FridgeWarehouse.Data.Entities;
+using FridgeWarehouseApi.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,10 +15,15 @@ namespace FridgeWarehouseApi.Controllers
     {
         private readonly IUnitOfWork unitOfWork;
         private readonly Context context;
-        public FridgeController(IUnitOfWork unitOfWork, Context context)
+        private readonly IFridgeService fridgeService;
+        private readonly IMapper mapper;
+
+        public FridgeController(IUnitOfWork unitOfWork, Context context, IFridgeService fridgeService, IMapper mapper)
         {
             this.unitOfWork = unitOfWork;
             this.context = context;
+            this.fridgeService = fridgeService;
+            this.mapper = mapper;
         }
 
         [HttpGet]
@@ -32,6 +40,11 @@ namespace FridgeWarehouseApi.Controllers
             //await unitOfWork.Fridges.Add(test);
             //await unitOfWork.SaveChanges();
             return new BadRequestResult();
+        }
+
+        public async Task<IActionResult> GetFridgeCollection()
+        {
+            return Ok(mapper.Map<FridgeModelViewModel>(fridgeService.GetAllFridges()));
         }
     }
 }

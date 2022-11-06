@@ -3,6 +3,7 @@ using FridgeWarehouse.Core.Interfaces.Data;
 using FridgeWarehouse.Data;
 using FridgeWarehouse.Data.Entities;
 using FridgeWarehouse.DataAccess;
+using FridgeWarehouse.Domain.Constats;
 using FridgeWarehouse.Domain.Interfaces;
 using FridsgeWarehouse.Data.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -22,7 +23,7 @@ namespace FridgeApi
 
         public void ConfigureServices(IServiceCollection services)
         {
-            var connectionString = Configuration.GetConnectionString("DefaultConnection");
+            var connectionString = Configuration.GetConnectionString(DatabaseConstants.DatabaseConnectionStringName);
 
             services.AddDbContext<Context>(opt
                 => opt.UseSqlServer(connectionString));

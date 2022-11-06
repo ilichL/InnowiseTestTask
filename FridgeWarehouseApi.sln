@@ -3,11 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FridgeWarehouseApi", "FridgeApi\FridgeWarehouseApi.csproj", "{3D736E39-7D28-4BC9-9374-47702CE9E8B7}"
-	ProjectSection(ProjectDependencies) = postProject
-		{AB2C3480-41FE-49E2-9933-DFAD6CDD9F89} = {AB2C3480-41FE-49E2-9933-DFAD6CDD9F89}
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FridgeWarehouse.Data", "Fridsge.Data\FridgeWarehouse.Data.csproj", "{B2046BA7-3511-444C-8EF6-E1932AEB5CA8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FridgeWarehouse.DataAccess", "Fridge.DataAccess\FridgeWarehouse.DataAccess.csproj", "{AB2C3480-41FE-49E2-9933-DFAD6CDD9F89}"
@@ -16,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FridgeWarehouse.Core", "Fri
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FridgeWarehouse.Domain", "FridgeWarehouse.Domain\FridgeWarehouse.Domain.csproj", "{0405E045-CA15-459A-8638-C83D4AD4437E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FridgeWarehouse.Mvc", "FridgeWarehouse.Mvc\FridgeWarehouse.Mvc.csproj", "{6EC3F36B-6A02-4F11-945C-96A20C0795D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FridgeWarehouseApi", "FridgeApi\FridgeWarehouseApi.csproj", "{46FB3E8D-BA28-4499-9290-5251D9EA2E1D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,10 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3D736E39-7D28-4BC9-9374-47702CE9E8B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3D736E39-7D28-4BC9-9374-47702CE9E8B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3D736E39-7D28-4BC9-9374-47702CE9E8B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3D736E39-7D28-4BC9-9374-47702CE9E8B7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B2046BA7-3511-444C-8EF6-E1932AEB5CA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B2046BA7-3511-444C-8EF6-E1932AEB5CA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2046BA7-3511-444C-8EF6-E1932AEB5CA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -44,10 +35,10 @@ Global
 		{0405E045-CA15-459A-8638-C83D4AD4437E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0405E045-CA15-459A-8638-C83D4AD4437E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0405E045-CA15-459A-8638-C83D4AD4437E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6EC3F36B-6A02-4F11-945C-96A20C0795D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6EC3F36B-6A02-4F11-945C-96A20C0795D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6EC3F36B-6A02-4F11-945C-96A20C0795D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6EC3F36B-6A02-4F11-945C-96A20C0795D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46FB3E8D-BA28-4499-9290-5251D9EA2E1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46FB3E8D-BA28-4499-9290-5251D9EA2E1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46FB3E8D-BA28-4499-9290-5251D9EA2E1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46FB3E8D-BA28-4499-9290-5251D9EA2E1D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
