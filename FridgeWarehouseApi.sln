@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FridgeWarehouse.Domain", "F
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FridgeWarehouseApi", "FridgeApi\FridgeWarehouseApi.csproj", "{46FB3E8D-BA28-4499-9290-5251D9EA2E1D}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FridgeWarehouse.Mvc", "..\FridgeMvc\Fridge.Mvc\Fridge.Mvc\FridgeWarehouse.Mvc.csproj", "{B888017B-27EB-4965-9682-F62D60AB51A4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{46FB3E8D-BA28-4499-9290-5251D9EA2E1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46FB3E8D-BA28-4499-9290-5251D9EA2E1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46FB3E8D-BA28-4499-9290-5251D9EA2E1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B888017B-27EB-4965-9682-F62D60AB51A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B888017B-27EB-4965-9682-F62D60AB51A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B888017B-27EB-4965-9682-F62D60AB51A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B888017B-27EB-4965-9682-F62D60AB51A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

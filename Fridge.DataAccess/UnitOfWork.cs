@@ -18,11 +18,14 @@ namespace FridgeWarehouse.DataAccess
         private readonly IRepository<FridgeProduct> fridgeProductRepository;
         private readonly IRepository<Product> productRepository;
 
-        public UnitOfWork(Context context, IRepository<FridgeProduct> fridgeProductRepository, IRepository<Product> productRepository)
+        public UnitOfWork(Context context, IRepository<FridgeProduct> fridgeProductRepository, IRepository<Product> productRepository,
+            IRepository<Fridge> fridgeRepository, IRepository<FridgeModel> fridgeModelRepository)
         {
             this.context = context;
             this.fridgeProductRepository = fridgeProductRepository;
             this.productRepository = productRepository;
+            this.fridgeRepository = fridgeRepository;
+            this.fridgeModelRepository = fridgeModelRepository;
         }
 
         public IRepository<Fridge> Fridges => fridgeRepository;

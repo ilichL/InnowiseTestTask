@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace FridgeWarehouse.Core.DTOs
 {
-    public class FridgeProductDTO : BaseDTO
+    public abstract class BaseDTO
     {
-        public int Quantity { get; set; }
+        public string Name { get; set; }
     }
 }

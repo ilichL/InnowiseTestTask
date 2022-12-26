@@ -11,11 +11,12 @@ namespace FridgeWarehouse.Core.Interfaces
 {
     public interface IFridgeService
     {
-        IEnumerable<Fridge> GetAllFridges();
+        IQueryable<FridgeDTO> GetAllFridges();
 
         Task AddFridgeAsync(FridgeDTO model);
 
         Task UpdateFridgeAsync(FridgeDTO model, FridgeModelDTO fridgeModel, string? name, string? locationAddress);
+        Task EditFridge(FridgeDTO model, Guid id);
 
         Task RemoveFridgeByIdAsync(Guid id);
         Task RemoveFridgeAsync(FridgeDTO model, FridgeModelDTO fridgeModel);

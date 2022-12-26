@@ -1,4 +1,5 @@
-﻿using FridgeWarehouse.Core.Interfaces;
+﻿using FridgeWarehouse.Core.DTOs;
+using FridgeWarehouse.Core.Interfaces;
 using FridgeWarehouse.Core.Interfaces.Data;
 using FridgeWarehouse.Data;
 using FridgeWarehouse.Data.Entities;
@@ -34,6 +35,9 @@ namespace FridgeApi
             services.AddScoped<IRepository<Product>, Repository<Product>>();
             services.AddScoped<IFridgeService, FridgeService>();
             services.AddScoped<IFridgeProductService, FridgeProductService>();
+            services.AddScoped<IJsonSerializeService<BaseDTO>, JsonSerializeService<BaseDTO>>();
+            services.AddHttpClient();
+
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());//
 
             // Add services to the container.
@@ -54,6 +58,8 @@ namespace FridgeApi
 
             app.UseHttpsRedirection();
 
+            app.UseSwagger();
+            app.UseSwaggerUI();
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>

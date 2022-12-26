@@ -4,6 +4,7 @@ using FridgeWarehouse.Core.Interfaces;
 using FridgeWarehouse.Core.Interfaces.Data;
 using FridgeWarehouse.Data.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,16 +17,27 @@ namespace FridgeWarehouse.Domain.Interfaces
     {
         private readonly IUnitOfWork unitOfWork;
         private readonly IMapper mapper;
+        private readonly ILogger<FridgeService> logger;
 
-        public FridgeService(IUnitOfWork unitOfWork, IMapper mapper)
+        public FridgeService(IUnitOfWork unitOfWork, IMapper mapper, ILogger<FridgeService> logger)
         {
             this.unitOfWork = unitOfWork;
             this.mapper = mapper;
+            this.logger = logger;
         }
         
-        public IEnumerable<Fridge> GetAllFridges()
+        public IQueryable<FridgeDTO?> GetAllFridges()
         {
-            return unitOfWork.Fridges.Get();
+            try
+            {
+                return mapper.Map<IQueryable<FridgeDTO>>(unitOfWork.Fridges.Get());
+            }
+            catch(Exception ex)
+            {
+                logger.LogError(ex, ex.Message);
+                throw new Exception(ex.Message);
+            }
+        
         }
 
         public async Task AddFridgeAsync(FridgeDTO model)
@@ -47,6 +59,13 @@ namespace FridgeWarehouse.Domain.Interfaces
 
             await unitOfWork.Fridges.Update(fridge);
             await unitOfWork.SaveChanges();
+        }
+
+        public async Task EditFridge(FridgeDTO model, Guid id)
+        {
+            var fridge = await unitOfWork.Fridges.FindById(id);
+            fridge = mapper.Map<Fridge>(model);
+            await unitOfWork.Fridges.Update(fridge);
         }
 
         public async Task RemoveFridgeByIdAsync(Guid id)

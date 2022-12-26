@@ -60,7 +60,7 @@ namespace FridgeWarehouse.Domain.Interfaces
              .Where(product => product.Product.Name.Equals(model.Name) && product.Quantity.Equals(model.Quantity)).FirstOrDefaultAsync();
         }
 
-        public async Task UpdateFridgeProduct(FridgeProductDTO model, FridgeDTO fridgeModel, int quantity)
+        public async Task UpdateFridgeProductAsync(FridgeProductDTO model, FridgeDTO fridgeModel, int quantity)
         {
             FridgeProduct product = await GetFridgeWithProducts(model, fridgeModel);
             product.Quantity = quantity;
@@ -68,5 +68,22 @@ namespace FridgeWarehouse.Domain.Interfaces
             await unitOfWork.FridgeProducts.Update(product);
             await unitOfWork.SaveChanges();
         }
+
+        public async Task UpdateFridgeProductByIdAsync(Guid id, FridgeProductDTO model)
+        {
+            var fridgeProduct = mapper.Map<FridgeProduct>(model);
+            fridgeProduct.Id = id;
+            await unitOfWork.FridgeProducts.Update(fridgeProduct);
+            await unitOfWork.SaveChanges();
+        }
+
+        public async Task RemoveFridgeProductByTdAsync(Guid id)
+        {
+            await unitOfWork.FridgeProducts.Remove(id);
+            await unitOfWork.SaveChanges();
+        }
+
+//        public async Task RemoveFridgeProductRangeAsync(IEnumerable<>)
+
     }
 }

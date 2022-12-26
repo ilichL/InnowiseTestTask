@@ -10,6 +10,7 @@ namespace FridgeApi
                 {
                     lc.MinimumLevel.Information().WriteTo.Console();
                     lc.MinimumLevel.Debug().WriteTo.File(@"C:\Users\adm\Desktop\Site\WarspearProject\FridgeApi\log.log");
+
                 }).ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
@@ -17,7 +18,7 @@ namespace FridgeApi
 
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+                CreateHostBuilder(args).Build().Run();
 
         }
     }

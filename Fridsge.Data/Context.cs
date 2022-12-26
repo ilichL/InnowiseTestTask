@@ -13,6 +13,7 @@ namespace FridgeWarehouse.Data
     {
         public DbSet<Fridge> Fridges { get; set; }
         public DbSet<FridgeModel> FridgeModels { get; set; }
+        public DbSet<FridgeProduct> FridgeProducts { get; set; }
         public DbSet<Product> Products { get; set; }
 
         public Context (DbContextOptions<Context> options)
