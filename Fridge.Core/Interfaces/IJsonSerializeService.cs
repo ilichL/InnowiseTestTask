@@ -11,5 +11,7 @@ namespace FridgeWarehouse.Core.Interfaces
     public interface IJsonSerializeService<T> where T : BaseDTO
     {
         Task<List<T>> ResponseAsync(string url);
+        Task<bool> PostResponseWithDTOAsync(string url, T model);
+        Task<bool> DeleteResponseASync(string url, Guid id);
     }
 }

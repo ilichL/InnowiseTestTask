@@ -31,7 +31,7 @@ namespace FridgeWarehouseApi.Controllers
 
         [HttpGet(nameof(GetFridgeCollection))]
         public IActionResult GetFridgeCollection()
-        {
+        {//Errror 400
          try
          {
             return Ok(fridgeService.GetAllFridges());
@@ -101,7 +101,7 @@ namespace FridgeWarehouseApi.Controllers
             try
             {
                 var fridge = await fridgeService.GetFridgeByIdASync(id);
-                return Ok();
+                return Ok(fridge);
             }
             catch(Exception ex)
             {
