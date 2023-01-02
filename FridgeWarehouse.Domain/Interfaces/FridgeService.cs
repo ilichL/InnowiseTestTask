@@ -26,11 +26,20 @@ namespace FridgeWarehouse.Domain.Interfaces
             this.logger = logger;
         }
         
-        public IQueryable<FridgeDTO?> GetAllFridges()
-        {
+        public async Task<List<FridgeDTO>> GetAllFridges()
+        {//mapper for fridgeProduct => fridgeProductDTO. Mapper fridge => FridgeDTO, where fridgeProduct => fridgeProductDTO
+            var fridges = unitOfWork.Fridges.Get().ToList();
+            var a = new List<FridgeDTO>();
+            foreach (var fridge in fridges)
+            {
+                a.Add(mapper.Map<FridgeDTO>(fridge));
+            }
+
+            return a;
             try
             {
-                return mapper.Map<IQueryable<FridgeDTO>>(unitOfWork.Fridges.Get());
+
+
             }
             catch(Exception ex)
             {

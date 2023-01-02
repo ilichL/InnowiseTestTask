@@ -19,14 +19,16 @@ namespace FridgeWarehouseApi.Controllers
         private readonly IFridgeProductService fridgeProductService;
         private readonly IMapper mapper;
         private readonly ILogger<FridgeController> logger;
+        private readonly IUnitOfWork unitOfWork;
 
         public FridgeController(IFridgeService fridgeService,IMapper mapper, IFridgeProductService fridgeProductService,
-            ILogger<FridgeController> logger)
+            ILogger<FridgeController> logger, IUnitOfWork unitOfWork)
         {
             this.fridgeService = fridgeService;
             this.mapper = mapper;
             this.fridgeProductService = fridgeProductService;
             this.logger = logger;
+            this.unitOfWork = unitOfWork;
         }
 
         [HttpGet(nameof(GetFridgeCollection))]
