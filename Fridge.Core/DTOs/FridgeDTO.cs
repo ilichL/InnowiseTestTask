@@ -9,8 +9,9 @@ namespace FridgeWarehouse.Core.DTOs
 {
     public class FridgeDTO : BaseDTO
     {
+        public string Name { get; set; }
         public string LocationAddress { get; set; }
-        public Guid FridgeModelId { get; set; }
-        public virtual ICollection<FridgeDTO> FridgeProducts { get; set; }
+        public Guid? FridgeModelId { get; set; }
+        public virtual ICollection<FridgeDTO>? FridgeProducts { get; set; }
     }
 }

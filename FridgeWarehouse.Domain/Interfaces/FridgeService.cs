@@ -26,20 +26,12 @@ namespace FridgeWarehouse.Domain.Interfaces
             this.logger = logger;
         }
         
-        public async Task<List<FridgeDTO>> GetAllFridges()
-        {//mapper for fridgeProduct => fridgeProductDTO. Mapper fridge => FridgeDTO, where fridgeProduct => fridgeProductDTO
-            var fridges = unitOfWork.Fridges.Get().ToList();
-            var a = new List<FridgeDTO>();
-            foreach (var fridge in fridges)
-            {
-                a.Add(mapper.Map<FridgeDTO>(fridge));
-            }
-
-            return a;
+        public FridgeDTO GetAllFridges()
+        {
             try
             {
-
-
+                return mapper.Map<FridgeDTO>(unitOfWork.Fridges.Get().FirstOrDefault());
+               
             }
             catch(Exception ex)
             {

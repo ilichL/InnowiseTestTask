@@ -57,7 +57,7 @@ namespace FridgeWarehouse.Domain.Interfaces
              .Include(fridge => fridge.FridgeProducts)
              .ThenInclude(fridgeProducts => fridgeProducts.Product).AsNoTracking()
              .SelectMany(fridge => fridge.FridgeProducts)
-             .Where(product => product.Product.Name.Equals(model.Name) && product.Quantity.Equals(model.Quantity)).FirstOrDefaultAsync();
+             .Where(product => product.Quantity.Equals(model.Quantity)).FirstOrDefaultAsync();
         }
 
         public async Task UpdateFridgeProductAsync(FridgeProductDTO model, FridgeDTO fridgeModel, int quantity)

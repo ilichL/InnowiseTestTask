@@ -8,6 +8,6 @@ namespace FridgeWarehouse.Core.DTOs
 {
     public abstract class BaseDTO
     {
-        public string Name { get; set; }
+
     }
 }
