@@ -30,8 +30,8 @@ namespace FridgeWarehouse.Domain.Interfaces
         {
             try
             {
-                return mapper.Map<FridgeDTO>(unitOfWork.Fridges.Get().FirstOrDefault());
-               
+                return mapper.Map<FridgeDTO>(unitOfWork.Fridges.Get());
+               //mapper error
             }
             catch(Exception ex)
             {
@@ -40,7 +40,12 @@ namespace FridgeWarehouse.Domain.Interfaces
             }
         
         }
-
+        /// <summary>
+        /// как передать модель в json
+        /// че как вернуть массив
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public async Task AddFridgeAsync(FridgeDTO model)
         {
             var fridge = mapper.Map<Fridge>(model);

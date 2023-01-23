@@ -13,5 +13,6 @@ namespace FridgeWarehouse.Core.Interfaces
         Task<List<T>> ResponseAsync(string url);
         Task<bool> PostResponseWithDTOAsync(string url, T model);
         Task<bool> DeleteResponseASync(string url, Guid id);
+        Task<TResponse> Post<TResponse, TBodyType>(string url, TBodyType obj);
     }
 }

@@ -1,16 +1,8 @@
-﻿using FridgeWarehouse.Data.Entities;
-using FridsgeWarehouse.Data.Entities;
-using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 using Newtonsoft.Json;
 using FridgeWarehouse.Core.DTOs;
 using FridgeWarehouse.Core.Interfaces;
-using System.Net.Http;
 using Microsoft.Extensions.Logging;
 using System.Net.Http.Json;
 
@@ -105,6 +97,21 @@ namespace FridgeWarehouse.Domain.Interfaces
             }
             return deserialized;
 
+        }
+
+
+        public async Task<TResponse> Post<TResponse, TBodyType>(string url, TBodyType obj)
+        {
+            var json = JsonConvert.SerializeObject(obj);
+            var body = new StringContent(json, Encoding.UTF8, ContentTypes.ApplicationJson);
+
+            var client = new HttpClient();
+            var response = await client.PostAsync(url, body);
+            var stringResponse = await response.Content.ReadAsStringAsync();
+
+            var result = JsonConvert.DeserializeObject<TResponse>(stringResponse);
+
+            return result;
         }
     }
 }
