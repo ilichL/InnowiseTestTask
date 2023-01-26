@@ -12,6 +12,7 @@ namespace FridgeWarehouse.Core.DTOs
         public string Name { get; set; }
         public string LocationAddress { get; set; }
         public Guid? FridgeModelId { get; set; }
-        public virtual ICollection<FridgeDTO>? FridgeProducts { get; set; }
+        public virtual FridgeModelDTO FridgeModel { get; set; }
+        public virtual ICollection<FridgeProductDTO>? FridgeProducts { get; set; }
     }
 }

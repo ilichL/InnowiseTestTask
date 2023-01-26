@@ -2,6 +2,7 @@
 using FridgeWarehouse.Data;
 using FridgeWarehouse.Data.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
@@ -54,12 +55,21 @@ namespace FridgeWarehouse.DataAccess
             }
             return result;
         }
+        /*
+        public virtual async IQueryable<T> GetByIdWithIncludes(Guid id, params Expression<Func<T, object>>[] includes)
+        {
+            if (includes.Any())
+            {
+                return includes.Aggregate(dbSet.Where(entity => entity.Id.Equals(id)),
+                    (current, include) => current.Include(include));
+            }
 
+            return null;
+        }
+        */
         public virtual IQueryable<T> Get()
         {
             return dbSet.AsNoTracking();
         }
-
-
     }
 }

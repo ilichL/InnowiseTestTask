@@ -48,5 +48,11 @@ namespace FridgeWarehouseApi.Controllers
             return Ok();
         }
 
+        [HttpGet(nameof(GetFridgeProductsByFridgeId))]
+        public IActionResult GetFridgeProductsByFridgeId(Guid id)
+        {
+            return Ok(fridgeProductService.GetFridgeProductsByFridgeId(id));
+        }
+
     }
 }

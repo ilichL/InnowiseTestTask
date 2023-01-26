@@ -17,5 +17,6 @@ namespace FridgeWarehouse.Core.Interfaces
         Task UpdateFridgeProductAsync(FridgeProductDTO model, FridgeDTO fridgeModel, int quantity);
         Task UpdateFridgeProductByIdAsync(Guid id, FridgeProductDTO model);
         Task RemoveFridgeProductByTdAsync(Guid id);
+        List<FridgeProductDTO> GetFridgeProductsByFridgeId(Guid fridgeId);
     }
 }

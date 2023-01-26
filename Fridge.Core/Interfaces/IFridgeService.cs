@@ -11,7 +11,7 @@ namespace FridgeWarehouse.Core.Interfaces
 {
     public interface IFridgeService
     {
-        FridgeDTO GetAllFridges();
+        List<FridgeDTO> GetAllFridges();
 
         Task AddFridgeAsync(FridgeDTO model);
 

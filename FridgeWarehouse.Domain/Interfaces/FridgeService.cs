@@ -26,12 +26,25 @@ namespace FridgeWarehouse.Domain.Interfaces
             this.logger = logger;
         }
         
-        public FridgeDTO GetAllFridges()
+        public List<FridgeDTO> GetAllFridges()
         {
             try
             {
-                return mapper.Map<FridgeDTO>(unitOfWork.Fridges.Get());
-               //mapper error
+                
+                
+                /*var fridgeList = unitOfWork.Fridges.Get().Include(fridge => fridge.FridgeProducts).ToList();
+                var result = mapper.Map<List<FridgeDTO>>(fridgeList);
+                foreach(var fridge in fridgeList)
+                {
+                    foreach(var res in result)
+                    {
+                        res.FridgeProducts = mapper.Map<List<FridgeProductDTO>>(fridge.FridgeProducts);
+                    }
+                }*/
+
+                //как это замапить в FridgeDto красиво
+                return //result; 
+                    mapper.Map<List<FridgeDTO>>(unitOfWork.Fridges.Get());
             }
             catch(Exception ex)
             {
@@ -40,12 +53,7 @@ namespace FridgeWarehouse.Domain.Interfaces
             }
         
         }
-        /// <summary>
-        /// как передать модель в json
-        /// че как вернуть массив
-        /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>
+
         public async Task AddFridgeAsync(FridgeDTO model)
         {
             var fridge = mapper.Map<Fridge>(model);

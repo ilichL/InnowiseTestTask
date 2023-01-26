@@ -83,6 +83,12 @@ namespace FridgeWarehouse.Domain.Interfaces
             await unitOfWork.SaveChanges();
         }
 
+        public List<FridgeProductDTO> GetFridgeProductsByFridgeId(Guid fridgeId)
+        {
+            return mapper.Map<List<FridgeProductDTO>>(GetAllFridgeProducts()
+                .Where(product => product.FridgeId.Equals(fridgeId)));
+        }
+
 //        public async Task RemoveFridgeProductRangeAsync(IEnumerable<>)
 
     }
