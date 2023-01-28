@@ -85,6 +85,14 @@ namespace FridgeWarehouse.Domain.Interfaces
 
         public List<FridgeProductDTO> GetFridgeProductsByFridgeId(Guid fridgeId)
         {
+
+            var products = mapper.Map<List<FridgeProductDTO>>(unitOfWork.FridgeProducts.Get()
+                .Where(product => product.FridgeId.Equals(fridgeId)));
+
+            products.ForEach(product => product.Product = mapper.Map<ProductDTO>(unitOfWork.Products.Get()
+                .Where(x => x.FridgeProduct.Id.Equals(product.Id))
+                .FirstOrDefault()));//mapper error
+            return products;
             return mapper.Map<List<FridgeProductDTO>>(GetAllFridgeProducts()
                 .Where(product => product.FridgeId.Equals(fridgeId)));
         }

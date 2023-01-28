@@ -64,9 +64,10 @@ namespace FridgeWarehouse.Domain.Interfaces
         {//delete return just Ok response, but getFridgeById return model, what shouldI do?
             //протесттить 
             //передаст ли нормально id?
+            var t = id;
             using var httpClient = clientFactory.CreateClient("defaultFactory");
             //url += "{" + id + "}";
-            url += "?id =" + id;
+            url += "?id=" + id;
             var response = await httpClient.GetAsync(url);
             var responseStr = await response.Content.ReadAsStringAsync();
 
