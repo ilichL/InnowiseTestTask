@@ -83,16 +83,28 @@ namespace FridgeWarehouse.Domain.Interfaces
             await unitOfWork.SaveChanges();
         }
 
-        public List<FridgeProductDTO> GetFridgeProductsByFridgeId(Guid fridgeId)
+        public async Task<List<FridgeProductDTO>> GetFridgeProductsByFridgeId(Guid fridgeId)
         {
+            return mapper.Map<List<FridgeProductDTO>>(unitOfWork.FridgeProducts.Get()
+                .Include(x => x.Product));
+            /*
+            var products  = unitOfWork.FridgeProducts.Get()
+                .Include(x => x.Product)
+                .Where(product => product.FridgeId.Equals(fridgeId));
+            var result = mapper.Map<List<FridgeProductDTO>>(products);
 
-            var products = mapper.Map<List<FridgeProductDTO>>(unitOfWork.FridgeProducts.Get()
-                .Where(product => product.FridgeId.Equals(fridgeId)));
+            foreach(var pro in  products)
+            {
+                result.ForEach(product => product.Product = mapper.Map<ProductDTO>(pro.Product));
+            }
 
-            products.ForEach(product => product.Product = mapper.Map<ProductDTO>(unitOfWork.Products.Get()
-                .Where(x => x.FridgeProduct.Id.Equals(product.Id))
-                .FirstOrDefault()));//mapper error
-            return products;
+            return result;
+            */
+            //products.ForEach(product => product.Product = mapper.Map<ProductDTO>(unitOfWork.Products.Get()
+                //.Where(x => x.FridgeProduct.Id.Equals(product.Id))
+              //  .Where()
+                //.FirstOrDefault()));//mapper error
+            
             return mapper.Map<List<FridgeProductDTO>>(GetAllFridgeProducts()
                 .Where(product => product.FridgeId.Equals(fridgeId)));
         }

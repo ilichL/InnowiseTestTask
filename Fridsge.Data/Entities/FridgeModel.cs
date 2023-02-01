@@ -11,6 +11,6 @@ namespace FridsgeWarehouse.Data.Entities
     {
         public string Name { get; set; }
         public int year { get; set; }
-        public virtual Fridge Fridge { get; set; }
+        public virtual ICollection<Fridge> Fridges { get; set; }
     }
 }

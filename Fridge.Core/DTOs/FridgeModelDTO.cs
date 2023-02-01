@@ -11,6 +11,6 @@ namespace FridgeWarehouse.Core.DTOs
     {
         public string Name { get; set; }
         public int year { get; set; }
-        public FridgeDTO Fridge { get; set; }
+        public List<FridgeDTO> Fridge { get; set; }
     }
 }

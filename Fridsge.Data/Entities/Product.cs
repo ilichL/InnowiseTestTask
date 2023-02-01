@@ -12,7 +12,7 @@ namespace FridgeWarehouse.Data.Entities
     {
         public string Name { get; set; }
         public int DefaultQuantity { get; set; }
-        public virtual FridgeProduct FridgeProduct { get; set; }
+        public virtual ICollection<FridgeProduct> FridgeProduct { get; set; }
 
     }
 }

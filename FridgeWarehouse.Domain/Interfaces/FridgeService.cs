@@ -30,21 +30,10 @@ namespace FridgeWarehouse.Domain.Interfaces
         {
             try
             {
-                
-                
-                /*var fridgeList = unitOfWork.Fridges.Get().Include(fridge => fridge.FridgeProducts).ToList();
-                var result = mapper.Map<List<FridgeDTO>>(fridgeList);
-                foreach(var fridge in fridgeList)
-                {
-                    foreach(var res in result)
-                    {
-                        res.FridgeProducts = mapper.Map<List<FridgeProductDTO>>(fridge.FridgeProducts);
-                    }
-                }*/
-
-                //как это замапить в FridgeDto красиво
-                return //result; 
-                    mapper.Map<List<FridgeDTO>>(unitOfWork.Fridges.Get());
+                return mapper.Map<List<FridgeDTO>>(unitOfWork.Fridges.Get()
+                    .Include(fridge => fridge.FridgeModel)
+                    .Include(fridge => fridge.FridgeProducts)
+                    .ThenInclude(product => product.Product));
             }
             catch(Exception ex)
             {
