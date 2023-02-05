@@ -14,7 +14,9 @@ namespace FridgeWarehouseApi.Mapper
                 .ForMember(dto => dto.Name,
                     opt => opt.MapFrom(product => product.Name))
                 .ForMember(dto => dto.DefaultQuantity,
-                    opt => opt.MapFrom(product => product.DefaultQuantity));
+                    opt => opt.MapFrom(product => product.DefaultQuantity))
+                .ForMember(dto => dto.FridgeProduct,
+                    opt => opt.MapFrom(product => product.FridgeProduct));
 
             CreateMap<ProductDTO, Product>()
                 .ForMember(dto => dto.Id,
@@ -22,7 +24,9 @@ namespace FridgeWarehouseApi.Mapper
                 .ForMember(dto => dto.Name,
                     opt => opt.MapFrom(product => product.Name))
                 .ForMember(dto => dto.DefaultQuantity,
-                    opt => opt.MapFrom(product => product.DefaultQuantity));
+                    opt => opt.MapFrom(product => product.DefaultQuantity))
+                .ForMember(dto => dto.FridgeProduct,
+                    opt => opt.MapFrom(product => product.FridgeProduct));
         }
     }
 }
